@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>マインスイーパー</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>マインスイーパー</h1>
+
+      <div class="controls">
+        <label for="width">幅:</label>
+        <input type="number" id="width" value="10" min="1" max="50">
+        <label for="height">高さ:</label>
+        <input type="number" id="height" value="10" min="1" max="50">
+        <label for="mines">地雷:</label>
+        <input type="number" id="mines" value="10" min="1">
+        <button id="new-game-btn">新しいゲーム</button>
+      </div>
+
+      <div class="game-info">
+          <span id="mines-left">残り地雷数: 10</span>
+          <span id="timer">時間: 0</span>
+      </div>
+
+      <div id="game-board" class="game-board"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

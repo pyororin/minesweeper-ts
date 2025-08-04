@@ -1,0 +1,113 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.controls, .game-info {
+    margin-bottom: 1rem;
+}
+
+.controls > * {
+    margin: 0 0.5rem;
+}
+
+.game-board {
+  display: grid;
+  /* Provide fallbacks for the variables */
+  grid-template-columns: repeat(var(--width, 10), 30px);
+  grid-template-rows: repeat(var(--height, 10), 30px);
+  gap: 2px;
+  margin: 0 auto; /* Center the board */
+  border: 2px solid #333;
+  padding: 5px;
+  background-color: #444;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  background-color: #777;
+  border: 1px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+
+.cell:not(.revealed):hover {
+    background-color: #888;
+}
+
+.cell.revealed {
+  background-color: #444;
+  cursor: default;
+  border: 1px solid #555;
+}
+
+.cell.flagged::before {
+    content: '🚩';
+    font-size: 1.5rem; /* Make flag bigger */
+}
+
+/* Only show mine if the cell is also revealed (game over) */
+.cell.mine.revealed::before {
+    content: '💣';
+    font-size: 1.5rem;
+}
+
+/* Colors for numbers */
+.cell[data-count="1"] { color: #1e90ff; } /* dodgerblue */
+.cell[data-count="2"] { color: #32cd32; } /* limegreen */
+.cell[data-count="3"] { color: #ff4500; } /* orangered */
+.cell[data-count="4"] { color: #4169e1; } /* royalblue */
+.cell[data-count="5"] { color: #c71585; } /* mediumvioletred */
+.cell[data-count="6"] { color: #20b2aa; } /* lightseagreen */
+.cell[data-count="7"] { color: #6a5acd; } /* slateblue */
+.cell[data-count="8"] { color: #a9a9a9; } /* darkgray */
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+  .game-board {
+    border: 2px solid #ccc;
+    background-color: #eee;
+  }
+  .cell {
+    background-color: #ccc;
+    border: 1px solid #aaa;
+  }
+  .cell:not(.revealed):hover {
+    background-color: #ddd;
+  }
+  .cell.revealed {
+    background-color: #eee;
+    border: 1px solid #ddd;
+  }
+}
